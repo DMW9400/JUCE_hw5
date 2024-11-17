@@ -9,6 +9,7 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "GranSynth.h"
 
 //==============================================================================
 /**
@@ -52,8 +53,16 @@ public:
     //==============================================================================
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    
+    juce::AudioProcessorValueTreeState& getAPVTS() { return apvts; }
+
 
 private:
     //==============================================================================
+    GranSynth granSynth;
+    juce::AudioProcessorValueTreeState apvts;
+    juce::AudioProcessorValueTreeState::ParameterLayout createParameters();
+    void updateGrainParameters();
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Hw5AudioProcessor)
 };

@@ -4,10 +4,14 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
   <MAINGROUP id="nxqUnO" name="hw5">
     <GROUP id="{6967FFCA-F197-9C93-4616-18EB93F6ED43}" name="Source">
+      <FILE id="z0b6ql" name="Grain.cpp" compile="1" resource="0" file="Source/Grain.cpp"/>
+      <FILE id="Z9RUMT" name="Grain.h" compile="0" resource="0" file="Source/Grain.h"/>
       <FILE id="hnFnEx" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="WJtO8Z" name="PluginProcessor.h" compile="0" resource="0"
             file="Source/PluginProcessor.h"/>
+      <FILE id="WBT6s3" name="GranSynth.cpp" compile="1" resource="0" file="Source/GranSynth.cpp"/>
+      <FILE id="znsf94" name="GranSynth.h" compile="0" resource="0" file="Source/GranSynth.h"/>
       <FILE id="GuMdfd" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="mfpkjx" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
