@@ -121,7 +121,7 @@ void Hw5AudioProcessorEditor::filesDropped (const juce::StringArray& files, int 
 
         if (audioFile.existsAsFile())
         {
-            audioProcessor.granSynth.loadAudioFile(audioFile);
+            audioProcessor.loadAudioFile(audioFile);
             break; // Only load the first valid audio file
         }
     }
@@ -131,11 +131,16 @@ void Hw5AudioProcessorEditor::loadAudioFile()
 {
     juce::FileChooser chooser("Select an audio file...", {}, "*.wav;*.mp3;*.aiff;*.flac");
 
-    if (chooser.browseForFileToOpen())
-    {
-        juce::File audioFile = chooser.getResult();
-        audioProcessor.granSynth.loadAudioFile(audioFile);
-    }
+    chooser.launchAsync(juce::FileBrowserComponent::openMode | juce::FileBrowserComponent::canSelectFiles,
+        [this](const juce::FileChooser& fc)
+        {
+            auto audioFile = fc.getResult();
+
+            if (audioFile.existsAsFile())
+            {
+                audioProcessor.loadAudioFile(audioFile);
+            }
+        });
 }
 
 void Hw5AudioProcessorEditor::loadFileButtonClicked()

@@ -28,6 +28,9 @@ public:
    #ifndef JucePlugin_PreferredChannelConfigurations
     bool isBusesLayoutSupported (const BusesLayout& layouts) const override;
    #endif
+    
+    void loadAudioFile(const juce::File& audioFile);
+
 
     void processBlock (juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
 

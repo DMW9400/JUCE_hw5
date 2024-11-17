@@ -162,6 +162,11 @@ void Hw5AudioProcessor::updateGrainParameters()
     granSynth.setGrainParameters(grainSize, grainOverlap, grainSpacing);
 }
 
+void Hw5AudioProcessor::loadAudioFile(const juce::File& audioFile)
+{
+    granSynth.loadAudioFile(audioFile);
+}
+
 //==============================================================================
 bool Hw5AudioProcessor::hasEditor() const
 {
