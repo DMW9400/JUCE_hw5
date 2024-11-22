@@ -84,6 +84,9 @@ private:
      * Opens a file chooser dialog to load an audio file.
      */
     void loadAudioFile();
+    
+    std::unique_ptr<juce::FileChooser> fileChooser;
+
 
     /**
      * Callback for when the load file button is clicked.

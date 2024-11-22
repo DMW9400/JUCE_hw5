@@ -139,21 +139,32 @@ void Hw5AudioProcessorEditor::filesDropped (const juce::StringArray& files, int 
 
 void Hw5AudioProcessorEditor::loadAudioFile()
 {
-    juce::FileChooser chooser("Select an audio file...", {}, "*.wav;*.mp3;*.aiff;*.flac");
+    DBG("Opening File Chooser");
 
-    chooser.launchAsync(juce::FileBrowserComponent::openMode | juce::FileBrowserComponent::canSelectFiles,
-        [this](const juce::FileChooser& fc)
+    fileChooser = std::make_unique<juce::FileChooser>("Select an audio file...", juce::File(), "*.wav;*.mp3;*.aiff;*.flac");
+    
+    fileChooser->launchAsync(juce::FileBrowserComponent::openMode | juce::FileBrowserComponent::canSelectFiles,
+        [this](const juce::FileChooser&)
         {
-            auto audioFile = fc.getResult();
+            auto audioFile = fileChooser->getResult();
 
             if (audioFile.existsAsFile())
             {
+                DBG("Audio file selected: " + audioFile.getFullPathName());
                 audioProcessor.loadAudioFile(audioFile);
             }
+            else
+            {
+                DBG("No valid audio file selected.");
+            }
+
+            // Reset the FileChooser to release it
+            fileChooser.reset();
         });
 }
 
 void Hw5AudioProcessorEditor::loadFileButtonClicked()
 {
+    DBG("Load File Button Clicked.");
     loadAudioFile();
 }

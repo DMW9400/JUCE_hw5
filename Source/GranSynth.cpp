@@ -40,12 +40,24 @@ void GranSynth::setGrainParameters(int size, int overlap, int spacing)
 
 void GranSynth::loadAudioFile(const juce::File& audioFile)
 {
+    if (!audioFile.existsAsFile())
+    {
+        DBG("Selected file does not exist.");
+        return;
+    }
+
     std::unique_ptr<juce::AudioFormatReader> reader(formatManager.createReaderFor(audioFile));
 
-    if (reader.get() != nullptr)
+    if (reader != nullptr)
     {
         sourceBuffer.setSize((int)reader->numChannels, (int)reader->lengthInSamples);
         reader->read(&sourceBuffer, 0, (int)reader->lengthInSamples, 0, true, true);
+
+        DBG("Audio file loaded successfully.");
+    }
+    else
+    {
+        DBG("Failed to create AudioFormatReader for the selected file.");
     }
 }
 
