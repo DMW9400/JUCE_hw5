@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="Tc1HwS" name="hw5" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginFormats="buildStandalone,buildVST3">
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginFormats="buildStandalone,buildVST3"
+              pluginCharacteristicsValue="pluginIsSynth">
   <MAINGROUP id="nxqUnO" name="hw5">
     <GROUP id="{6967FFCA-F197-9C93-4616-18EB93F6ED43}" name="Source">
       <FILE id="z0b6ql" name="Grain.cpp" compile="1" resource="0" file="Source/Grain.cpp"/>
