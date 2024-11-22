@@ -104,10 +104,20 @@ void Hw5AudioProcessorEditor::resized()
 
 bool Hw5AudioProcessorEditor::isInterestedInFileDrag (const juce::StringArray& files)
 {
+    // Initialize a static AudioFormatManager
+    static juce::AudioFormatManager formatManager;
+    static bool formatsRegistered = false;
+
+    if (!formatsRegistered)
+    {
+        formatManager.registerBasicFormats();
+        formatsRegistered = true;
+    }
+
     // We are interested if any of the files are audio files
     for (auto& file : files)
     {
-        if (juce::AudioFormatManager().findFormatForFileExtension(file))
+        if (formatManager.findFormatForFileExtension(file))
             return true;
     }
     return false;
